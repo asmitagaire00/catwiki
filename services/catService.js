@@ -1,7 +1,11 @@
+require("dotenv").config();
+
+const api_key = process.env.API_KEY_CATWIKI;
+
 const getCatBreeds = () => {
   try {
     const catBreeds = fetch(
-      "https://api.thecatapi.com/v1/images/search?breed_ids=beng"
+      `https://api.thecatapi.com/v1/images/search?limit=15&api_key=${api_key}`
     )
       .then((response) => response.json())
       .then((catInfo) => console.log(catInfo))
@@ -11,3 +15,5 @@ const getCatBreeds = () => {
     throw error;
   }
 };
+
+module.exports = { getCatBreeds };

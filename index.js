@@ -5,6 +5,8 @@ const helmet = require("helmet");
 
 const v1CatRoute = require("./v1/routes/catRoute");
 
+require("dotenv").config();
+
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
