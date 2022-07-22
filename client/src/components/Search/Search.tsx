@@ -6,7 +6,7 @@ const Search = () => {
       <input
         type="Search"
         placeholder="Search"
-        className="text-xs text-[#291507] ml-2  md:text-lg"
+        className="text-xs text-[#291507] ml-2  md:text-lg md:p-2"
       />
       <button className="">🔍</button>
     </div>

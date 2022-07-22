@@ -3,7 +3,7 @@ import HeroTopCard from "../HeroTopCard/HeroTopCard";
 
 const Hero = () => {
   return (
-    <div className="flex flex-row flex-wrap">
+    <div className="flex flex-col ">
       <HeroTopCard />
       <HeroBottomCard />
     </div>
