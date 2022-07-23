@@ -8,7 +8,7 @@ const HeroTopCard = () => {
         alt="hero"
         className="w-full object-contain border rounded-t-[42px]"
       />
-      <div className="text-white absolute top-6 left-5  md:top-[3rem] md:left-[3rem] lg:top-[5rem] lg:left-[5rem] ">
+      <div className="text-white absolute top-6 left-5  md:top-[3rem] md:left-[3rem] lg:top-[5rem] lg:left-[5rem] max-w-xs">
         <p className="font-mysteryQuest text-sm md:text-[30px] lg:text-[40px] mb-1.5 md:mb-4 lg:mb-6">
           Catwiki<span className="hidden md:inline-block">🐈</span>
         </p>
