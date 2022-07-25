@@ -1,11 +1,15 @@
 import HeroBottomCard from "../HeroBottomCard/HeroBottomCard";
 import HeroTopCard from "../HeroTopCard/HeroTopCard";
 
-const Hero = () => {
+interface heroProps {
+  setShowSearchedItems: Function;
+}
+
+const Hero = ({ setShowSearchedItems }: heroProps) => {
   return (
     <div className="flex flex-col ">
       <HeroTopCard />
-      <HeroBottomCard />
+      <HeroBottomCard setShowSearchedItems={setShowSearchedItems} />
     </div>
   );
 };

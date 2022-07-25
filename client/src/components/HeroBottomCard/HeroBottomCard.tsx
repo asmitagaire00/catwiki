@@ -1,6 +1,15 @@
-import React from "react";
+interface heroBottomCardProps {
+  setShowSearchedItems: Function;
+}
 
-const HeroBottomCard = () => {
+const HeroBottomCard = ({ setShowSearchedItems }: heroBottomCardProps) => {
+  const handleMostSearchedItems = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+
+    setShowSearchedItems(true);
+
+    console.log("clicked");
+  };
   return (
     <div className="bg-[#E3E1DC] pl-4 pr-4 pt-4 md:pl-12 md:pr-12 w-full border rounded-b-[42px]">
       <p className="text-xs md:text-lg pb-0.5 ">Most Searched breeds</p>
@@ -9,8 +18,8 @@ const HeroBottomCard = () => {
         <p className="text-lg font-bold md:text-[30px] lg:text-[40px] text-currentColor">
           66+ breeds for you to discover
         </p>
-        <div className="flex">
-          <p className="hidden md:text-lg md:text-readMoreColor md:inline-block  md:mr-2">
+        <div onClick={handleMostSearchedItems} className="flex cursor-pointer">
+          <p className="hidden md:text-lg md:text-readMoreColor md:inline-block  md:mr-2 ">
             See More
           </p>
           <div className="hidden md:inline-block mt-[4px]">→</div>
@@ -52,6 +61,9 @@ const HeroBottomCard = () => {
           />
           <p className="text-xs pt-1">catty</p>
         </div>
+      </div>
+      <div>
+        <a href="/profile"></a>
       </div>
     </div>
   );

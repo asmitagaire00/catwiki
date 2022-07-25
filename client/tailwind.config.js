@@ -11,6 +11,8 @@ module.exports = {
         titleColor: "#291507",
         currentColor: "rgba(41, 21, 7, 1)",
         readMoreColor: "rgba(41, 21, 7, 0.6)",
+        cancelColor: "rgba(151, 151, 151, 0.1)",
+        borderColor: "rgba(0, 0, 0, 1)",
       },
     },
   },

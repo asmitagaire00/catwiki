@@ -1,6 +1,11 @@
+import { useState } from "react";
+import DialogCustom from "../DialogCustom/DialogCustom";
 import Search from "../Search/Search";
 
 const HeroTopCard = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [searchFieldValue, setSearchFieldValue] = useState<string>("");
+
   return (
     <div className="relative">
       <img
@@ -15,8 +20,26 @@ const HeroTopCard = () => {
         <p className="text-[10px] md:text-xl lg:text-2xl mb-2.5 md:mb-4 lg:mb-6">
           Get to know more about your cat breeds
         </p>
-        <Search />
+        <Search
+          setOpenModal={setOpenModal}
+          openModal={openModal}
+          setSearchFieldValue={setSearchFieldValue}
+          searchFieldValue={searchFieldValue}
+        />
       </div>
+      <DialogCustom
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        setSearchFieldValue={setSearchFieldValue}
+        searchFieldValue={searchFieldValue}
+      >
+        <Search
+          setOpenModal={setOpenModal}
+          openModal={openModal}
+          setSearchFieldValue={setSearchFieldValue}
+          searchFieldValue={searchFieldValue}
+        />
+      </DialogCustom>
     </div>
   );
 };
