@@ -3,13 +3,12 @@ const fetch = require("node-fetch");
 
 const api_key = process.env.API_KEY_CATWIKI;
 
-const getCatBreeds = async (breedId) => {
+const getCatBreeds = async () => {
   try {
     const response = await fetch(
-      `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId.breedId}&api_key=${api_key}`
+      `https://api.thecatapi.com/v1/breeds?limit=20&page=0&api_key=${api_key}`
     );
-    const catInfo = await response.json();
-    return catInfo;
+    return response.json();
   } catch (error) {
     throw error;
   }

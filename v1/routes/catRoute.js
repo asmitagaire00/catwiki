@@ -3,6 +3,6 @@ const router = express.Router();
 
 const catController = require("../../controllers/catController");
 
-router.get("/:breedId", catController.getCatBreeds);
+router.get("/", catController.getCatBreeds);
 
 module.exports = router;

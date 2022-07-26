@@ -112,10 +112,10 @@ const Search = ({
             : ""
         }`}
       >
-        {filteredCatBreedList.map((breedInfo, index) => {
+        {filteredCatBreedList.map((catBreedItem, index) => {
           return (
             <SearchBreedList
-              breedInfo={breedInfo}
+              catBreedItem={catBreedItem}
               key={index}
               searchShow={searchShow}
               searchFieldValue={searchFieldValue}
@@ -128,20 +128,3 @@ const Search = ({
 };
 
 export default Search;
-
-// if (catBreed) {
-//   fetch(`http://localhost:3001/api/post/${catBreed}`)
-//     .then((response) => response.json())
-//     .then((catBreedData) => {
-//       // console.log("cat breed info", catBreedData);
-//       if (catBreedData.data !== "") {
-//         console.log("cat breed info", catBreedData.data);
-//         setCatBreedInfo(catBreedData);
-//       } else {
-//         console.log("couldn't find any breeds");
-//       }
-//     })
-//     .catch((error) => console.log("Please enter some breed", error));
-// } else {
-//   console.log("Please enter some cat breeds");
-// }

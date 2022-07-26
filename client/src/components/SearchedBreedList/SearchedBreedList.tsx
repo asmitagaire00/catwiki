@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface searchedBreedListProps {
   searchShow: boolean;
-  breedInfo: any;
+  catBreedItem: any;
   searchFieldValue: string;
 }
 
 const SearchBreedList = ({
   searchShow,
-  breedInfo,
+  catBreedItem,
   searchFieldValue,
 }: searchedBreedListProps) => {
+  const [showProfile, setShowProfile] = useState<boolean>(false);
+  const handleCatBreedItem = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    setShowProfile(true);
+  };
   return (
     <div className=" bg-white ">
       <div
@@ -18,7 +25,11 @@ const SearchBreedList = ({
           searchFieldValue ? "bg-white text-currentColor p-3 " : ""
         } `}
       >
-        {searchFieldValue && <div className="bg-white ">{breedInfo.name}</div>}
+        {searchFieldValue && (
+          <div onClick={handleCatBreedItem} className="bg-white ">
+            {catBreedItem.name}
+          </div>
+        )}
       </div>
     </div>
   );
