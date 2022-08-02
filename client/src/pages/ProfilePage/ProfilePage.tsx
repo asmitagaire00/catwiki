@@ -7,7 +7,7 @@ interface profileProps {
 
 const ProfilePage = ({ setShowProfile, catItem }: profileProps) => {
   return (
-    <div>
+    <div className="mb-5 md:mb-10 ">
       <CatItem setShowProfile={setShowProfile} catItem={catItem} />
     </div>
   );
