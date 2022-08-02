@@ -1,3 +1,4 @@
+import CatItemImages from "../CatItemImages/CatItemImages";
 import RatingContainer from "../RatingContainer/RatingContainer";
 
 interface catItemProps {
@@ -5,12 +6,21 @@ interface catItemProps {
   catItem: any;
 }
 const CatItem = ({ setShowProfile, catItem }: catItemProps) => {
+  const handleCatItemProfile = () => {
+    setShowProfile(false);
+  };
   return (
     <div>
-      <div className="flex flex-col md:justify-between md:flex-row  mt-3">
-        <div className="">
+      <div
+        onClick={handleCatItemProfile}
+        className=" color-black flex justify-end mb-3 cursor-pointer"
+      >
+        <span className="bg-cancelColor w-6 h-6 pb-1 pl-1">✖</span>
+      </div>
+      <div className="flex flex-col md:justify-between md:flex-row  mt-3 md:pl-12 md:pr-12 ">
+        <div className="md:mr-11">
           <img
-            className="mx-auto w-3/5  object-cover  rounded-3xl mt-5"
+            className="  object-cover rounded-3xl mt-5"
             src={catItem.image.url}
             alt="profile-pic"
           />
@@ -23,15 +33,15 @@ const CatItem = ({ setShowProfile, catItem }: catItemProps) => {
           </div>
           <div>
             <p className="text-base	mb-4">
-              <span className="text-base font-bold">Temperament:</span>
+              <span className="text-base font-bold mr-2">Temperament:</span>
               {catItem.temperament}
             </p>
             <p className="mb-4">
-              <span className="text-base font-bold">Origin:</span>
+              <span className="text-base font-bold mr-2">Origin:</span>
               {catItem.origin}
             </p>
             <p className="mb-4">
-              <span className="text-base font-bold">Life-Span:</span>
+              <span className="text-base font-bold mr-2">Life-Span:</span>
               {catItem.life_span}
             </p>
             <div className="flex flex-wrap mb-4 ">
@@ -69,6 +79,7 @@ const CatItem = ({ setShowProfile, catItem }: catItemProps) => {
           </div>
         </div>
       </div>
+      <CatItemImages catItem={catItem} />
     </div>
   );
 };
