@@ -1,6 +1,7 @@
 import React from "react";
 
 const HomePageBottom = () => {
+  const handleReadMore = () => {};
   return (
     <div className="flex flex-col flex-wrap md:flex-row md:justify-between  mt-10 md:pl-12 md:pr-12 ">
       <div className="flex-1">
@@ -13,7 +14,7 @@ const HomePageBottom = () => {
             Having a cat around you can actually trigger the release of calming
             chemicals in your body which lower your stress and anxiety leves
           </p>
-          <div className="flex">
+          <div onClick={handleReadMore} className="flex cursor-pointer">
             <p className="text-s font-bold text-readMoreColor inline-block mr-2">
               READ MORE
             </p>

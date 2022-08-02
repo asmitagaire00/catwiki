@@ -1,7 +1,16 @@
-import React from "react";
+import CatItem from "../../components/CatItem/CatItem";
 
-const ProfilePage = () => {
-  return <div>ProfilePage</div>;
+interface profileProps {
+  setShowProfile: Function;
+  catItem: any;
+}
+
+const ProfilePage = ({ setShowProfile, catItem }: profileProps) => {
+  return (
+    <div>
+      <CatItem setShowProfile={setShowProfile} catItem={catItem} />
+    </div>
+  );
 };
 
 export default ProfilePage;

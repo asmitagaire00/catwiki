@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HomePage from "../../pages/HomePage/HomePage";
+import ProfilePage from "../../pages/ProfilePage/ProfilePage";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import TopBreedList from "../TopBreedList/TopBreedList";
@@ -7,6 +8,8 @@ import "./App.css";
 
 const App = () => {
   const [showSearchedItems, setShowSearchedItems] = useState<boolean>(false);
+  const [showProfile, setShowProfile] = useState<boolean>(false);
+  const [catItem, setCatItem] = useState([]);
 
   return (
     <div className="overflow-y-hidden">
@@ -14,8 +17,14 @@ const App = () => {
         <Navbar />
         {showSearchedItems ? (
           <TopBreedList />
+        ) : showProfile ? (
+          <ProfilePage setShowProfile={setShowProfile} catItem={catItem} />
         ) : (
-          <HomePage setShowSearchedItems={setShowSearchedItems} />
+          <HomePage
+            setShowSearchedItems={setShowSearchedItems}
+            setShowProfile={setShowProfile}
+            setCatItem={setCatItem}
+          />
         )}
         <Footer />
       </div>

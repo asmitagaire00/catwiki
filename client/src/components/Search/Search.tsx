@@ -6,6 +6,8 @@ interface searchProps {
   openModal: boolean;
   setSearchFieldValue: Function;
   searchFieldValue: string;
+  setShowProfile: Function;
+  setCatItem: Function;
 }
 
 const Search = ({
@@ -13,23 +15,10 @@ const Search = ({
   openModal,
   setSearchFieldValue,
   searchFieldValue,
+  setShowProfile,
+  setCatItem,
 }: searchProps) => {
-  const [catBreedList, setCatBreedList] = useState<
-    {
-      //     temperament: string;
-      //     origin: string;
-      //     life_span:string
-      //  adaptability:number;
-      //  affection-level:number;
-      //  child-friendly:number;
-      //  grooming:number;
-      // intelligence:number;
-      //  health_issues:number;
-      //  social_needs:number;
-      //  stranger_friendly:number;
-      name: string;
-    }[]
-  >([]);
+  const [catBreedList, setCatBreedList] = useState<{ name: string }[]>([]);
   const [searchShow, setSearchShow] = useState<boolean>(false);
 
   let filteredCatBreedList = catBreedList;
@@ -43,6 +32,11 @@ const Search = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchFieldValue(e.target.value);
   };
+
+  const storageKey = "most-searched";
+  useEffect(() => {
+    localStorage.setItem(storageKey, JSON.stringify(searchFieldValue));
+  }, [searchFieldValue]);
 
   useEffect(() => {
     fetch("http://localhost:3001/api/post")
@@ -119,6 +113,8 @@ const Search = ({
               key={index}
               searchShow={searchShow}
               searchFieldValue={searchFieldValue}
+              setShowProfile={setShowProfile}
+              setCatItem={setCatItem}
             />
           );
         })}

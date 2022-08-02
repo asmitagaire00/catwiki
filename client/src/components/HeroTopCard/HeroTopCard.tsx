@@ -2,7 +2,12 @@ import { useState } from "react";
 import DialogCustom from "../DialogCustom/DialogCustom";
 import Search from "../Search/Search";
 
-const HeroTopCard = () => {
+interface heroTopCardProps {
+  setShowProfile: Function;
+  setCatItem: Function;
+}
+
+const HeroTopCard = ({ setShowProfile, setCatItem }: heroTopCardProps) => {
   const [openModal, setOpenModal] = useState(false);
   const [searchFieldValue, setSearchFieldValue] = useState<string>("");
 
@@ -25,6 +30,8 @@ const HeroTopCard = () => {
           openModal={openModal}
           setSearchFieldValue={setSearchFieldValue}
           searchFieldValue={searchFieldValue}
+          setShowProfile={setShowProfile}
+          setCatItem={setCatItem}
         />
       </div>
       <DialogCustom
@@ -38,6 +45,8 @@ const HeroTopCard = () => {
           openModal={openModal}
           setSearchFieldValue={setSearchFieldValue}
           searchFieldValue={searchFieldValue}
+          setShowProfile={setShowProfile}
+          setCatItem={setCatItem}
         />
       </DialogCustom>
     </div>
