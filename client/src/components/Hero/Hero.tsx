@@ -5,16 +5,22 @@ interface heroProps {
   setShowSearchedItems: Function;
   setShowProfile: Function;
   setCatItem: Function;
+  catItem: any;
 }
 
 const Hero = ({
   setShowSearchedItems,
   setShowProfile,
   setCatItem,
+  catItem,
 }: heroProps) => {
   return (
     <div className="flex flex-col ">
-      <HeroTopCard setShowProfile={setShowProfile} setCatItem={setCatItem} />
+      <HeroTopCard
+        setShowProfile={setShowProfile}
+        setCatItem={setCatItem}
+        catItem={catItem}
+      />
       <HeroBottomCard setShowSearchedItems={setShowSearchedItems} />
     </div>
   );

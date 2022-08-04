@@ -10,17 +10,17 @@ const CatItem = ({ setShowProfile, catItem }: catItemProps) => {
     setShowProfile(false);
   };
   return (
-    <div>
+    <div className=" md:pl-12 md:pr-12">
       <div
         onClick={handleCatItemProfile}
-        className=" color-black flex justify-end mb-3 cursor-pointer"
+        className=" color-black flex justify-end mb-3 cursor-pointer  md:mr-12"
       >
-        <span className="bg-cancelColor w-6 h-6 pb-1 pl-1">✖</span>
+        <span className="bg-cancelColor w-6 h-6 pb-1 pl-1 ">✖</span>
       </div>
       <div className="flex flex-col md:justify-between md:flex-row  mt-3 md:pl-12 md:pr-12 ">
         <div className="md:mr-11">
           <img
-            className="  object-cover rounded-3xl mt-5"
+            className="md:w-1/2  object-cover rounded-3xl mt-5"
             src={catItem.image.url}
             alt="profile-pic"
           />

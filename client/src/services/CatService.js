@@ -12,6 +12,24 @@ function getItemImages(catItem) {
     .catch((error) => console.log("couldnot fetch given id images", error));
 }
 
-const catService = { addMostSearched, getAllCatBreeds, getItemImages };
+function postCatItem(id) {
+  return fetch("http://localhost:3001/api/post", {
+    method: "POST",
+    body: JSON.stringify({ id: id }),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  // .then((response) => response.json())
+  // .catch((error) => console.log("couldnot fetch given id images", error));
+}
+
+const catService = {
+  addMostSearched,
+  getAllCatBreeds,
+  getItemImages,
+  postCatItem,
+};
 
 export default catService;

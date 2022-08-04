@@ -1,5 +1,6 @@
 require("dotenv").config();
 const fetch = require("node-fetch");
+const Post = require("../models/Post");
 
 const api_key = process.env.API_KEY_CATWIKI;
 
@@ -14,4 +15,25 @@ const getCatBreeds = async () => {
   }
 };
 
-module.exports = { getCatBreeds };
+const getCatBreedItem = async (catItemId) => {
+  try {
+    const response = await fetch(
+      `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${catItemId.id}&api_key=${api_key}`
+    );
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
+};
+
+const postCatBreedItem = async (newCatItem) => {
+  try {
+    const catItem = new Post(newCatItem);
+    await catItem.save();
+    return catItem;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = { getCatBreeds, getCatBreedItem, postCatBreedItem };

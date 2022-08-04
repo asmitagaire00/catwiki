@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SearchBreedList from "../SearchedBreedList/SearchedBreedList";
 
+import catService from "../../services/CatService";
+
 interface searchProps {
   setOpenModal: Function;
   openModal: boolean;
@@ -8,6 +10,7 @@ interface searchProps {
   searchFieldValue: string;
   setShowProfile: Function;
   setCatItem: Function;
+  catItem: any;
 }
 
 const Search = ({
@@ -17,9 +20,12 @@ const Search = ({
   searchFieldValue,
   setShowProfile,
   setCatItem,
+  catItem,
 }: searchProps) => {
   const [catBreedList, setCatBreedList] = useState<{ name: string }[]>([]);
   const [searchShow, setSearchShow] = useState<boolean>(false);
+
+  const [localStorageValue, setLocalStorageValue] = useState([{ id: "beng" }]);
 
   let filteredCatBreedList = catBreedList;
 
@@ -33,19 +39,22 @@ const Search = ({
     setSearchFieldValue(e.target.value);
   };
 
-  const storageKey = "most-searched";
-  useEffect(() => {
-    localStorage.setItem(storageKey, JSON.stringify(searchFieldValue));
-  }, [searchFieldValue]);
+  // const storageKey = "most-searched";
+
+  // useEffect(() => {
+  //   if (localStorageValue) {
+  //     localStorage.setItem(storageKey, JSON.stringify(localStorageValue));
+  //   } else if (searchFieldValue) {
+  //     localStorage.setItem(storageKey, JSON.stringify(searchFieldValue));
+  //     console.log(searchFieldValue);
+  //   }
+  // }, [localStorageValue, searchFieldValue]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/post")
-      .then((response) => response.json())
-      .then((catBreedData) => {
-        console.log("cat breed info", catBreedData.data);
-        setCatBreedList(catBreedData.data);
-      })
-      .catch((error) => console.log("could not fetch data", error));
+    const allCatBreeds = catService.getAllCatBreeds();
+    allCatBreeds.then((catBreedsDetails) => {
+      setCatBreedList(catBreedsDetails.data);
+    });
   }, []);
 
   const handleCatBreedSearch = (e: React.MouseEvent<HTMLElement>) => {
@@ -66,7 +75,6 @@ const Search = ({
         } md:justify-between rounded-[42px] md:w-full`}
       >
         <input
-          // type="Search"
           placeholder="Search"
           onChange={handleInputChange}
           onClick={handleSeach}
@@ -115,6 +123,8 @@ const Search = ({
               searchFieldValue={searchFieldValue}
               setShowProfile={setShowProfile}
               setCatItem={setCatItem}
+              setLocalStorageValue={setLocalStorageValue}
+              localStorageValue={localStorageValue}
             />
           );
         })}

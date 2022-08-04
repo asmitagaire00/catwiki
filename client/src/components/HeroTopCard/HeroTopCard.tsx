@@ -5,9 +5,14 @@ import Search from "../Search/Search";
 interface heroTopCardProps {
   setShowProfile: Function;
   setCatItem: Function;
+  catItem: any;
 }
 
-const HeroTopCard = ({ setShowProfile, setCatItem }: heroTopCardProps) => {
+const HeroTopCard = ({
+  setShowProfile,
+  setCatItem,
+  catItem,
+}: heroTopCardProps) => {
   const [openModal, setOpenModal] = useState(false);
   const [searchFieldValue, setSearchFieldValue] = useState<string>("");
 
@@ -32,6 +37,7 @@ const HeroTopCard = ({ setShowProfile, setCatItem }: heroTopCardProps) => {
           searchFieldValue={searchFieldValue}
           setShowProfile={setShowProfile}
           setCatItem={setCatItem}
+          catItem={catItem}
         />
       </div>
       <DialogCustom
@@ -47,6 +53,7 @@ const HeroTopCard = ({ setShowProfile, setCatItem }: heroTopCardProps) => {
           searchFieldValue={searchFieldValue}
           setShowProfile={setShowProfile}
           setCatItem={setCatItem}
+          catItem={catItem}
         />
       </DialogCustom>
     </div>
