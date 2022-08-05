@@ -11,6 +11,8 @@ interface searchProps {
   setShowProfile: Function;
   setCatItem: Function;
   catItem: any;
+  setCatBreedList: Function;
+  catBreedList: { name: string }[];
 }
 
 const Search = ({
@@ -21,11 +23,10 @@ const Search = ({
   setShowProfile,
   setCatItem,
   catItem,
+  setCatBreedList,
+  catBreedList,
 }: searchProps) => {
-  const [catBreedList, setCatBreedList] = useState<{ name: string }[]>([]);
   const [searchShow, setSearchShow] = useState<boolean>(false);
-
-  const [localStorageValue, setLocalStorageValue] = useState([]);
 
   let filteredCatBreedList = catBreedList;
 
@@ -39,23 +40,12 @@ const Search = ({
     setSearchFieldValue(e.target.value);
   };
 
-  // const storageKey = "most-searched";
-
-  // useEffect(() => {
-  //   if (localStorageValue) {
-  //     localStorage.setItem(storageKey, JSON.stringify(localStorageValue));
-  //   } else if (searchFieldValue) {
-  //     localStorage.setItem(storageKey, JSON.stringify(searchFieldValue));
-  //     console.log(searchFieldValue);
-  //   }
-  // }, [localStorageValue, searchFieldValue]);
-
   useEffect(() => {
     const allCatBreeds = catService.getAllCatBreeds();
     allCatBreeds.then((catBreedsDetails) => {
       setCatBreedList(catBreedsDetails.data);
     });
-  }, []);
+  });
 
   const handleCatBreedSearch = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -123,8 +113,6 @@ const Search = ({
               searchFieldValue={searchFieldValue}
               setShowProfile={setShowProfile}
               setCatItem={setCatItem}
-              setLocalStorageValue={setLocalStorageValue}
-              localStorageValue={localStorageValue}
             />
           );
         })}

@@ -6,12 +6,16 @@ interface heroTopCardProps {
   setShowProfile: Function;
   setCatItem: Function;
   catItem: any;
+  setCatBreedList: Function;
+  catBreedList: { name: string }[];
 }
 
 const HeroTopCard = ({
   setShowProfile,
   setCatItem,
   catItem,
+  setCatBreedList,
+  catBreedList,
 }: heroTopCardProps) => {
   const [openModal, setOpenModal] = useState(false);
   const [searchFieldValue, setSearchFieldValue] = useState<string>("");
@@ -38,6 +42,8 @@ const HeroTopCard = ({
           setShowProfile={setShowProfile}
           setCatItem={setCatItem}
           catItem={catItem}
+          setCatBreedList={setCatBreedList}
+          catBreedList={catBreedList}
         />
       </div>
       <DialogCustom
@@ -54,6 +60,8 @@ const HeroTopCard = ({
           setShowProfile={setShowProfile}
           setCatItem={setCatItem}
           catItem={catItem}
+          setCatBreedList={setCatBreedList}
+          catBreedList={catBreedList}
         />
       </DialogCustom>
     </div>

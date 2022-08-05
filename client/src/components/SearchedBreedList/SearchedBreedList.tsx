@@ -6,8 +6,6 @@ interface searchedBreedListProps {
   searchFieldValue: string;
   setShowProfile: Function;
   setCatItem: Function;
-  setLocalStorageValue: Function;
-  localStorageValue: any;
 }
 
 const SearchBreedList = ({

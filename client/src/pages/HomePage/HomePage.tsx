@@ -5,6 +5,8 @@ interface homePageProps {
   setShowProfile: Function;
   setCatItem: Function;
   catItem: any;
+  setCatBreedList: Function;
+  catBreedList: { name: string }[];
 }
 
 const HomePage = ({
@@ -12,6 +14,8 @@ const HomePage = ({
   setShowProfile,
   setCatItem,
   catItem,
+  setCatBreedList,
+  catBreedList,
 }: homePageProps) => {
   return (
     <div className="flex flex-col flex-wrap mb-5 md:mb-10 ">
@@ -20,6 +24,8 @@ const HomePage = ({
         setShowProfile={setShowProfile}
         setCatItem={setCatItem}
         catItem={catItem}
+        setCatBreedList={setCatBreedList}
+        catBreedList={catBreedList}
       />
       <HomePageBottom />
     </div>

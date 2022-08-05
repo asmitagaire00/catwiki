@@ -1,12 +1,29 @@
+import { useEffect, useState } from "react";
+import catService from "../../services/CatService";
+
 interface heroBottomCardProps {
   setShowSearchedItems: Function;
 }
 
 const HeroBottomCard = ({ setShowSearchedItems }: heroBottomCardProps) => {
+  const [showHeroBottomList, setShowHeroBottomList] = useState<
+    {
+      name: string;
+      url: string;
+    }[]
+  >([]);
   const handleMostSearchedItems = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     setShowSearchedItems(true);
   };
+
+  useEffect(() => {
+    const mostSearchedHeroBottom = catService.getMostSearch();
+    mostSearchedHeroBottom.then((mostSearchedInfo) => {
+      setShowHeroBottomList(mostSearchedInfo.data.slice(0, 4));
+    });
+  });
+
   return (
     <div className="bg-[#E3E1DC] pl-4 pr-4 pt-4 md:pl-12 md:pr-12 w-full border rounded-b-[42px]">
       <p className="text-xs md:text-lg pb-0.5 ">Most Searched breeds</p>
@@ -23,44 +40,20 @@ const HeroBottomCard = ({ setShowSearchedItems }: heroBottomCardProps) => {
         </div>
       </div>
       <div className="flex flex-wrap ">
-        <div className=" mr-3 mb-4 md:flex-1">
-          <img
-            src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-            alt=""
-            className="md:w-full  w-[134px] h-32 object-cover border rounded-xl "
-          />
-          <p className="text-xs pt-1">catty</p>
-        </div>
-
-        <div className=" md:mr-6 mb-4 md:flex-1">
-          <img
-            src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-            alt=""
-            className="md:w-full  w-[134px] h-32 object-cover border rounded-xl "
-          />
-          <p className="text-xs pt-1">catty</p>
-        </div>
-
-        <div className=" mr-3 mb-4 md:flex-1">
-          <img
-            src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-            alt=""
-            className="md:w-full  w-[134px] h-32 object-cover border rounded-xl "
-          />
-          <p className="text-xs pt-1">catty</p>
-        </div>
-
-        <div className="  mb-4 md:flex-1">
-          <img
-            src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-            alt=""
-            className="md:w-full  w-[134px] h-32 object-cover border rounded-xl "
-          />
-          <p className="text-xs pt-1">catty</p>
-        </div>
-      </div>
-      <div>
-        <a href="/profile"></a>
+        {showHeroBottomList.map((showMostSearchedList, index) => {
+          return (
+            <div className=" mr-3 mb-4 md:flex-1" key={index}>
+              <img
+                src={showMostSearchedList.url}
+                alt=""
+                className="md:w-full  w-[134px] h-32 object-cover border rounded-xl "
+              />
+              <p className="text-lg font-semibold font-montserrat pt-1">
+                {showMostSearchedList.name}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

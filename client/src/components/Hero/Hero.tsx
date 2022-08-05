@@ -6,6 +6,8 @@ interface heroProps {
   setShowProfile: Function;
   setCatItem: Function;
   catItem: any;
+  setCatBreedList: Function;
+  catBreedList: { name: string }[];
 }
 
 const Hero = ({
@@ -13,6 +15,8 @@ const Hero = ({
   setShowProfile,
   setCatItem,
   catItem,
+  setCatBreedList,
+  catBreedList,
 }: heroProps) => {
   return (
     <div className="flex flex-col ">
@@ -20,6 +24,8 @@ const Hero = ({
         setShowProfile={setShowProfile}
         setCatItem={setCatItem}
         catItem={catItem}
+        setCatBreedList={setCatBreedList}
+        catBreedList={catBreedList}
       />
       <HeroBottomCard setShowSearchedItems={setShowSearchedItems} />
     </div>
