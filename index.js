@@ -4,6 +4,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const v1CatRoute = require("./v1/routes/catRoute");
+const v1MostSearchedRoute = require("./v1/routes/mostSearchedRoute");
 const mongoose = require("mongoose");
 
 require("dotenv").config();
@@ -18,6 +19,7 @@ app.use(cors());
 app.use(helmet());
 
 app.use("/api/post", v1CatRoute);
+app.use("/api/mostSearched", v1MostSearchedRoute);
 
 app.listen(3001, () => {
   console.log("server running successfully");
