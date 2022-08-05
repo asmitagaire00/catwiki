@@ -16,7 +16,7 @@ const App = () => {
       <div className="flex flex-col flex-wrap mt-[2rem] mx-5 md:mx-[4rem] h-full">
         <Navbar />
         {showSearchedItems ? (
-          <TopBreedList catItem={catItem} />
+          <TopBreedList catItem={catItem} showProfile={showProfile} />
         ) : showProfile ? (
           <ProfilePage setShowProfile={setShowProfile} catItem={catItem} />
         ) : (

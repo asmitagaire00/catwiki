@@ -12,17 +12,26 @@ function getItemImages(catItem) {
     .catch((error) => console.log("couldnot fetch given id images", error));
 }
 
-function postCatItem(id) {
-  return fetch("http://localhost:3001/api/post", {
+function postCatItem(id, name, url, description) {
+  return fetch("http://localhost:3001/api/mostSearched", {
     method: "POST",
-    body: JSON.stringify({ id: id }),
+    body: JSON.stringify({
+      id: id,
+      name: name,
+      url: url,
+      description: description,
+    }),
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
   });
-  // .then((response) => response.json())
-  // .catch((error) => console.log("couldnot fetch given id images", error));
+}
+
+function getMostSearch() {
+  return fetch("http://localhost:3001/api/mostSearched")
+    .then((response) => response.json())
+    .catch((error) => console.log("couldnot fetch most searched item", error));
 }
 
 const catService = {
@@ -30,6 +39,7 @@ const catService = {
   getAllCatBreeds,
   getItemImages,
   postCatItem,
+  getMostSearch,
 };
 
 export default catService;

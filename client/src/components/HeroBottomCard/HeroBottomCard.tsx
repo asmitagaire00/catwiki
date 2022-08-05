@@ -5,10 +5,7 @@ interface heroBottomCardProps {
 const HeroBottomCard = ({ setShowSearchedItems }: heroBottomCardProps) => {
   const handleMostSearchedItems = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-
     setShowSearchedItems(true);
-
-    console.log("clicked");
   };
   return (
     <div className="bg-[#E3E1DC] pl-4 pr-4 pt-4 md:pl-12 md:pr-12 w-full border rounded-b-[42px]">

@@ -11,13 +11,10 @@ interface searchedBreedListProps {
 }
 
 const SearchBreedList = ({
-  searchShow,
   catBreedItem,
   searchFieldValue,
   setShowProfile,
   setCatItem,
-  setLocalStorageValue,
-  localStorageValue,
 }: searchedBreedListProps) => {
   const handleCatBreedItem = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -25,8 +22,12 @@ const SearchBreedList = ({
     e.preventDefault();
     setShowProfile(true);
     setCatItem(catBreedItem);
-    setLocalStorageValue([...localStorageValue, { id: catBreedItem.id }]);
-    catService.postCatItem(catBreedItem.id);
+    catService.postCatItem(
+      catBreedItem.id,
+      catBreedItem.name,
+      catBreedItem.image.url,
+      catBreedItem.description
+    );
   };
   return (
     <div className=" bg-white ">

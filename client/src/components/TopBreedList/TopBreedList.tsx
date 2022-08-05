@@ -1,39 +1,36 @@
 import { useEffect, useState } from "react";
+import catService from "../../services/CatService";
 import ShowTopBreedList from "../ShowTopBreedList/ShowTopBreedList";
 
 interface breedListProps {
   catItem: any;
+  showProfile: boolean;
 }
 
-const TopBreedList = ({ catItem }: breedListProps) => {
+const TopBreedList = ({ catItem, showProfile }: breedListProps) => {
   const [topSearchedItems, setTopSearchedItems] = useState<{ id: string }[]>(
     []
   );
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("most-searched")!);
-
-    console.log("items", items);
-
-    if (items) {
-      console.log("items", items);
-      setTopSearchedItems(items);
-    }
+    const mostSearched = catService.getMostSearch();
+    mostSearched.then((mostSearchedInfo) => {
+      setTopSearchedItems(mostSearchedInfo.data);
+    });
   }, []);
 
+  if (showProfile) {
+  }
+
   return (
-    <div className=" border border-sky-800">
+    <div className="pl-12 pr-12 ">
       <div>
-        <h2 className="text-4xl">Top 10 most searched breeds</h2>
+        <h2 className="text-4xl my-10">Top 10 most searched breeds</h2>
       </div>
-      <p className="border border-pink-700">
-        {topSearchedItems.map((item) => {
-          return <div>{item.id}</div>;
-        })}
-      </p>
-      {topSearchedItems.map((item) => {
-        return <ShowTopBreedList />;
+      {topSearchedItems.map((mostSearchedItem, index) => {
+        return (
+          <ShowTopBreedList mostSearchedItem={mostSearchedItem} key={index} />
+        );
       })}
-      <div className=""></div>
     </div>
   );
 };

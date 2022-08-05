@@ -25,7 +25,7 @@ const Search = ({
   const [catBreedList, setCatBreedList] = useState<{ name: string }[]>([]);
   const [searchShow, setSearchShow] = useState<boolean>(false);
 
-  const [localStorageValue, setLocalStorageValue] = useState([{ id: "beng" }]);
+  const [localStorageValue, setLocalStorageValue] = useState([]);
 
   let filteredCatBreedList = catBreedList;
 
