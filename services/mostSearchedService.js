@@ -12,6 +12,13 @@ const getMostSearchedItem = async () => {
 };
 
 const postMostSearchedItem = async (newCatItem) => {
+  const alreadyExitedItem = await Post.findOne({ catItem: newCatItem.catItem });
+  if (alreadyExitedItem) {
+    throw {
+      status: 400,
+      message: "given catItem already exist",
+    };
+  }
   try {
     const catItem = new Post(newCatItem);
     await catItem.save();

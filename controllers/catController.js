@@ -19,17 +19,7 @@ const getCatBreedItem = async (req, res) => {
   }
 };
 
-const postCatBreedItem = async (req, res) => {
-  const { body } = req;
-  const newCatItem = {
-    catItem: body.id,
-  };
-  try {
-    const catItem = await catService.postCatBreedItem(newCatItem);
-    res.status(200).send({ status: "ok", data: catItem });
-  } catch (error) {
-    res.status(500).send({ status: "Failed", data: { error: 500 } });
-  }
+module.exports = {
+  getCatBreeds,
+  getCatBreedItem,
 };
-
-module.exports = { getCatBreeds, getCatBreedItem, postCatBreedItem };
