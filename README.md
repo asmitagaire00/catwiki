@@ -9,18 +9,16 @@
 
 ## Overview
 
-Cat wiki app.Through this app you can search cat breeds, check top 10 searched cat breeds.
+Cat wiki app.Through this app you can search cat breeds, check top most searched cat breeds.
 Also you can see choosed breed details including description, temperament, origin, life span, adaptability, affection level and so on.
 
 Design of the app are listed below:
-
 ![](client/public/assets/Screen%20Shot2.png)
 ![](client/public/assets/Screen%20Shot3.png)
 ![](client/public/assets/Screen%20Shot4.png)
-![](client/public/assets/Screen%20Shot1%20.png)
-![](client/public/assets/Screen%20Shot5.png)
-![](client/public/assets/Screen%20Shot6.png)
 ![](client/public/assets/Screen%20Shot7.png)
+![](client/public/assets/Screen%20Shot6.png)
+![](client/public/assets/Screen%20Shot1.png)
 
 ### Built With
 
