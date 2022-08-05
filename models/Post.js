@@ -14,6 +14,9 @@ const PostSchema = new mongoose.Schema(
     description: {
       type: String,
     },
+    count: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

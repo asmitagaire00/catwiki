@@ -20,7 +20,7 @@ const HeroBottomCard = ({ setShowSearchedItems }: heroBottomCardProps) => {
   useEffect(() => {
     const mostSearchedHeroBottom = catService.getMostSearch();
     mostSearchedHeroBottom.then((mostSearchedInfo) => {
-      setShowHeroBottomList(mostSearchedInfo.data.slice(0, 4));
+      setShowHeroBottomList(mostSearchedInfo.data.slice(0, 5));
     });
   });
 
@@ -42,11 +42,11 @@ const HeroBottomCard = ({ setShowSearchedItems }: heroBottomCardProps) => {
       <div className="flex flex-wrap ">
         {showHeroBottomList.map((showMostSearchedList, index) => {
           return (
-            <div className=" mr-3 mb-4 md:flex-1" key={index}>
+            <div className="mr-1 md:mr-0 mb-4 md:flex-1" key={index}>
               <img
                 src={showMostSearchedList.url}
                 alt=""
-                className="md:w-full  w-[134px] h-32 object-cover border rounded-xl "
+                className="w-[134px] h-32 object-cover border rounded-xl "
               />
               <p className="text-lg font-semibold font-montserrat pt-1">
                 {showMostSearchedList.name}

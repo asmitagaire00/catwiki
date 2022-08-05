@@ -8,7 +8,9 @@ interface catItemProps {
 const CatItem = ({ setShowProfile, catItem }: catItemProps) => {
   const handleCatItemProfile = () => {
     setShowProfile(false);
+    console.log(catItem);
   };
+
   return (
     <div className=" md:pl-12 md:pr-12">
       <div
@@ -46,35 +48,35 @@ const CatItem = ({ setShowProfile, catItem }: catItemProps) => {
             </p>
             <div className="flex flex-wrap mb-4 ">
               <p className="text-base font-bold  mb-2">Adaptability:</p>
-              <RatingContainer />
+              <RatingContainer value={catItem.adaptability} />
             </div>
             <div className="flex flex-wrap mb-4 ">
-              <p className="text-base font-bold  mb-2">Affection-level:</p>
-              <RatingContainer />
+              <p className="text-base font-bold  mb-2">Affection_level:</p>
+              <RatingContainer value={catItem.affection_level} />
             </div>
             <div className="flex flex-wrap mb-4 ">
-              <p className="text-base font-bold  mb-2">Child-Friendly:</p>
-              <RatingContainer />
+              <p className="text-base font-bold  mb-2">Child_Friendly:</p>
+              <RatingContainer value={catItem.child_friendly} />
             </div>
             <div className="flex flex-wrap mb-4 ">
               <p className="text-base font-bold  mb-2">Grooming:</p>
-              <RatingContainer />
+              <RatingContainer value={catItem.grooming} />
             </div>
             <div className="flex flex-wrap mb-4 ">
               <p className="text-base font-bold  mb-2">Intelligence:</p>
-              <RatingContainer />
+              <RatingContainer value={catItem.intelligence} />
             </div>
             <div className="flex flex-wrap mb-4 ">
               <p className="text-base font-bold  mb-2">Health_Issues:</p>
-              <RatingContainer />
+              <RatingContainer value={catItem.health_issues} />
             </div>
             <div className="flex flex-wrap mb-4 ">
               <p className="text-base font-bold  mb-2">Social_Needs:</p>
-              <RatingContainer />
+              <RatingContainer value={catItem.social_needs} />
             </div>
             <div className="flex flex-wrap mb-4 ">
               <p className="text-base font-bold  mb-2">Stranger_Friendly:</p>
-              <RatingContainer />
+              <RatingContainer value={catItem.stranger_friendly} />
             </div>
           </div>
         </div>
