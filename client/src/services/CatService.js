@@ -12,7 +12,7 @@ function getItemImages(catItem) {
     .catch((error) => console.log("couldnot fetch given id images", error));
 }
 
-function postCatItem(id, name, url, description) {
+function postCatItem(id, name, url, description, count) {
   return fetch("http://localhost:3001/api/mostSearched", {
     method: "POST",
     body: JSON.stringify({
@@ -20,6 +20,7 @@ function postCatItem(id, name, url, description) {
       name: name,
       url: url,
       description: description,
+      count: count,
     }),
     headers: {
       Accept: "application/json",

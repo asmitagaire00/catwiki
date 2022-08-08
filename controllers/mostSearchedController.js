@@ -19,6 +19,7 @@ const postMostSearchedItem = async (req, res) => {
     name: body.name,
     url: body.url,
     description: body.description,
+    count: body.count,
   };
   try {
     const catItem = await mostSearchedService.postMostSearchedItem(newCatItem);

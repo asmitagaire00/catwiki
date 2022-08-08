@@ -1,3 +1,4 @@
+import { useState } from "react";
 import catService from "../../services/CatService";
 
 interface searchedBreedListProps {
@@ -14,17 +15,20 @@ const SearchBreedList = ({
   setShowProfile,
   setCatItem,
 }: searchedBreedListProps) => {
+  const [count, setCount] = useState<number>(1);
   const handleCatBreedItem = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     e.preventDefault();
+    setCount(1);
     setShowProfile(true);
     setCatItem(catBreedItem);
     catService.postCatItem(
       catBreedItem.id,
       catBreedItem.name,
       catBreedItem.image.url,
-      catBreedItem.description
+      catBreedItem.description,
+      count
     );
   };
   return (

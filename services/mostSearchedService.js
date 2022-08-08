@@ -2,9 +2,7 @@ const Post = require("../models/Post");
 
 const getMostSearchedItem = async () => {
   try {
-    const mostSearchedItems = await Post.find()
-      .sort({ createdAt: -1 })
-      .limit(10);
+    const mostSearchedItems = await Post.find().sort({ count: -1 }).limit(10);
     return mostSearchedItems;
   } catch (error) {
     throw error;
@@ -14,10 +12,16 @@ const getMostSearchedItem = async () => {
 const postMostSearchedItem = async (newCatItem) => {
   const alreadyExitedItem = await Post.findOne({ catItem: newCatItem.catItem });
   if (alreadyExitedItem) {
-    throw {
-      status: 400,
-      message: "given catItem already exist",
-    };
+    const updatedItemCount = await Post.findOneAndUpdate(
+      { catItem: alreadyExitedItem.catItem },
+      {
+        count: (
+          parseInt(alreadyExitedItem.count) + parseInt(newCatItem.count)
+        ).toString(),
+      },
+      { upsert: false }
+    );
+    await Post.save();
   }
   try {
     const catItem = new Post(newCatItem);
